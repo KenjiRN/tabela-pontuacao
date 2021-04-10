@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão Dev - Tabela</title>
+    
+    <style>
+        * {
+    text-align: center;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    min-height: 400px;
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/29/15/18/tianjin-2185510_960_720.jpg');
+    background-color: #111;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+.page-title {
+    color: #ffffff;
+    margin: 0 0 5px;
+}
+
+.page-subtitle {
+    color: #ffffff;
+    margin-top: 5px;
+}
+
+.page-logo {
+    width: 200px;
+}
+
+.alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+table {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+h1 {
+    color: white;
+}
+
+th, tr, td {
+    border: solid 1px white;
+    color: white;
+}
+p{
+    color:white;
+}
+    </style>
+    
+</head>
+<body>
+    <h1>Tabela de classificação</h1>
+    <p>Exercício desenvolvido para a Imersão Dev #ALURA<br><strong>Orientações</strong> <br> 1. Cadastre o nome do usuário;<br> Link uma imagem<br>3. Pressione o botão correto de cada Vitória, empate ou derrota;
+
+        <br> Ps: os Usuários não estão relacionados
+        <br> Ps2: Exercício realizado apenas para fins didáticos.
+        </p>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Vitórias</th>
+                <th>Empates</th>
+                <th>Derrotas</th>
+                <th>Pontos</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaJogadores">
+
+        </tbody>
+    </table>
+    <script>
+        function button() {
+            const button = document.createElement('button')
+            button.innerHTML = 'Cadastrar Usuário'
+            button.setAttribute('type', 'submit')
+            const h1 = document.querySelector('h1')
+            h1.parentNode.insertBefore(button, h1.nextSibling)
+            button.addEventListener('click', addPlayer)
+            }
+    button()
+
+    function calculaPontos(jogador) {
+        const pontos = (jogador.vitorias * 3 + jogador.empates)
+  
+        return pontos
+    }
+
+    function exibirJogadoresNaTela(jogadores) {
+        let html = '';
+
+        for (let jogador in jogadores) {
+            
+
+            html += "<tr><td> " + jogadores[jogador].nome + "<img src=" + jogadores[jogador].srcImg + " height='40'>" + " </td>"
+            html += "<td>" + jogadores[jogador].vitorias + "</td>"
+            html += "<td>" + jogadores[jogador].empates + "</td>"
+            html += "<td>" + jogadores[jogador].derrotas + "</td>"
+            html += "<td>" + jogadores[jogador].pontos + "</td>"
+
+           
+            html += '<td><button onClick="adicionarVitoria(' + jogador + ')">Vitória</button></td>'
+            html += '<td><button onClick="adicionarEmpate(' + jogador + ')">Empate</button></td>'
+            html += '<td><button onClick="adicionarDerrota(' + jogador + ')">Derrota</button></td></tr>'
+
+        }
+        const tabelaJogadores = document.querySelector('#tabelaJogadores')
+       
+        tabelaJogadores.innerHTML = html
+    }
+
+    const jogadoresParticipantes = []
+
+  
+
+    function adicionarVitoria(jogador) {
+        let player = jogadoresParticipantes[jogador]
+        player.vitorias++
+        player.pontos = calculaPontos(player)
+        exibirJogadoresNaTela(jogadoresParticipantes)
+    }
+
+    function adicionarEmpate(jogador) {
+        let player = jogadoresParticipantes[jogador]
+        player.empates++
+        player.pontos = calculaPontos(player)
+        exibirJogadoresNaTela(jogadoresParticipantes)
+    
+    }
+    function adicionarDerrota(jogador) {
+        let player = jogadoresParticipantes[jogador]
+        player.derrotas++
+        player.pontos = calculaPontos(player)
+        exibirJogadoresNaTela(jogadoresParticipantes)
+    
+    }
+
+    function storePlayer() {
+        const player = {
+            nome: prompt('Nome do jogador'),
+            srcImg: prompt('Entre com a imgagem do jogador'),
+            vitorias: 0,
+            empates: 0,
+            derrotas: 0,
+            pontos: 0
+        }
+        return player;
+    }
+
+    function addPlayer() {
+        const newPlayer = storePlayer()
+        jogadoresParticipantes.push(newPlayer)
+        exibirJogadoresNaTela(jogadoresParticipantes)
+    }
+    </script>
+</body>
+
+</html>
