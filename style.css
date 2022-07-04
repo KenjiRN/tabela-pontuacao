@@ -1,0 +1,94 @@
+* {
+    text-align: center;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    min-height: 400px;
+    background-image: url('https://cdn.pixabay.com/photo/2017/03/29/15/18/tianjin-2185510_960_720.jpg');
+    
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+.page-title {
+    color: #ffffff;
+    margin: 0 0 5px;
+}
+
+.page-subtitle {
+    color: #ffffff;
+    margin-top: 5px;
+}
+
+.page-logo {
+    width: 200px;
+}
+
+.alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+table {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+h1 {
+    color: white;
+}
+
+th, tr, td {
+    border: solid 1px white;
+    color: white;
+}
+        .instrucoes{
+            color:white;
+            
+        }
+        @keyframes cor_fonte{  
+                    0, 100%{color: #0ff}
+                    25%{color: #f0f}
+                    50%{color:#06f}
+                    75%{color:#fff}
+                }
+        @keyframes brilho{
+            50%{text-shadow: 0px 0px 9px}
+            
+        }
+        .pp{ 
+            font-size: 20px;
+            font-family: 'New Tegomin', serif;
+        }
+        a{
+            font-size: 20px;
+            text-align:center ;
+            font-family: 'New Tegomin', serif;
+            animation-duration: 2s;
+            animation-name:brilho;
+            animation-iteration-count: infinite;
+            text-decoration: none;
+            color: white;
+        }
+        .imge{
+            width: 20px;
+            height: 20px;
+        }
+        .hahaha{
+            width: 600px;
+            margin: 150px auto;
+            color: #3f3;
+            animation-duration: 8s;
+            animation-name:cor_fonte;
+            animation-iteration-count: infinite;  
+        }
